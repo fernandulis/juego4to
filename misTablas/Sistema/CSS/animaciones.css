@@ -1,0 +1,398 @@
+/* ==========================================================================
+   ANIMACIONES.CSS - Plataforma Educativa "Mis Tablas" (4° Básico)
+   Efectos dinámicos, botones con animación, números en continuo movimiento
+   ========================================================================== */
+
+/* Animación general de entrada suave */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(10px);
+  }
+  70% {
+    transform: scale(1.05) translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.anim-pop {
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Flotación suave para avatares, mascotas e íconos */
+@keyframes floatY {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.anim-float {
+  animation: floatY 2.8s ease-in-out infinite;
+}
+
+/* Pulso y brillo de botones destacados */
+@keyframes pulseHeart {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.anim-pulse {
+  animation: pulseHeart 1.8s infinite ease-in-out;
+}
+
+/* Rebote festivo de victoria / acierto */
+@keyframes bounceWin {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-20px) scale(1.12);
+  }
+  60% {
+    transform: translateY(-10px) scale(1.06);
+  }
+}
+
+.anim-bounce {
+  animation: bounceWin 0.8s ease;
+}
+
+/* Sacudida cómica en caso de error para retroalimentación */
+@keyframes shakeWrong {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-12px) rotate(-3deg); }
+  40% { transform: translateX(12px) rotate(3deg); }
+  60% { transform: translateX(-7px) rotate(-1.5deg); }
+  80% { transform: translateX(7px) rotate(1.5deg); }
+}
+
+.anim-shake {
+  animation: shakeWrong 0.5s ease-in-out;
+}
+
+/* Giro de estrellas y medallas */
+@keyframes starSpin {
+  0% { transform: rotate(0deg) scale(0.9); }
+  50% { transform: rotate(180deg) scale(1.25); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.anim-spin {
+  animation: starSpin 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.anim-spin-slow {
+  display: inline-block;
+  animation: starSpin 3s infinite linear;
+}
+
+/* Efecto de brillo que cruza los botones (Shine Effect) */
+@keyframes shineSlide {
+  0% {
+    left: -120%;
+  }
+  20%, 100% {
+    left: 120%;
+  }
+}
+
+/* ==========================================================================
+   ANIMACIÓN CONTINUA Y VIVA PARA EL RESULTADO DE LA MULTIPLICACIÓN
+   El número se mueve, baila, respira y flota constantemente
+   ========================================================================== */
+
+@keyframes numberDance {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) scale(1.07) rotate(3deg);
+  }
+  50% {
+    transform: translateY(2px) scale(1.02) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-5px) scale(1.05) rotate(2deg);
+  }
+}
+
+.anim-dancing-number {
+  display: inline-block;
+  animation: numberDance 2.2s infinite ease-in-out !important;
+}
+
+/* Explosión viva cuando se cambia el multiplicador */
+@keyframes resultGlowPop {
+  0% {
+    transform: scale(0.6) rotate(-8deg);
+    opacity: 0.4;
+    filter: brightness(0.8);
+  }
+  45% {
+    transform: scale(1.35) rotate(5deg);
+    box-shadow: 0 0 35px #F59E0B, 0 8px 0 #B45309;
+    filter: brightness(1.25);
+  }
+  75% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.4), 0 5px 0 #B45309;
+    filter: brightness(1);
+  }
+}
+
+.anim-result-pop {
+  animation: resultGlowPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Borde brillante cambiante (Aura arcoíris para el resultado) */
+@keyframes rainbowAura {
+  0% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5), 0 5px 0 #B45309; border-color: #F59E0B; }
+  33% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 5px 0 #047857; border-color: #10B981; }
+  66% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 5px 0 #1D4ED8; border-color: #3B82F6; }
+  100% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.5), 0 5px 0 #BE185D; border-color: #EC4899; }
+}
+
+.anim-rainbow-aura {
+  animation: rainbowAura 3s infinite linear;
+}
+
+/* Caída de manzana rebotando */
+@keyframes appleDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(8px) scale(1.2);
+  }
+  80% {
+    transform: translateY(-4px) scale(0.95);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.anim-apple-drop {
+  animation: appleDrop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Salto alegre de personaje de concurso */
+@keyframes charJump {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-30px) scale(1.15) rotate(5deg); }
+  50% { transform: translateY(-15px) scale(1.08) rotate(-4deg); }
+  75% { transform: translateY(-5px) scale(1.02); }
+}
+
+.anim-char-jump {
+  animation: charJump 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Vibración de canasta */
+@keyframes basketWobble {
+  0%, 100% { transform: scale(1) rotate(0); }
+  25% { transform: scale(1.08) rotate(-3deg); }
+  50% { transform: scale(1.08) rotate(3deg); }
+  75% { transform: scale(1.03) rotate(-1deg); }
+}
+
+.anim-basket-wobble {
+  animation: basketWobble 0.4s ease-in-out;
+}
+
+/* ==========================================================================
+   ESTILOS Y ANIMACIONES PARA TODOS LOS BOTONES
+   Todos los botones tienen física arcade 3D, rebote y dinamismo
+   ========================================================================== */
+
+button,
+.btn,
+.btn-choice,
+.btn-table,
+.btn-avatar,
+.simce-num-btn,
+.game-table-pick-btn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 800;
+  border-radius: 18px;
+  border: 3px solid #1E293B;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              filter 0.2s ease;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Brillo automático en botones */
+button::after,
+.btn::after,
+.game-table-pick-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+button:hover::after,
+.btn:hover::after,
+.game-table-pick-btn:hover::after {
+  animation: shineSlide 1.5s infinite;
+}
+
+/* Estado Hover: Se eleva y aumenta ligeramente */
+button:hover,
+.btn:hover,
+.btn-choice:hover,
+.btn-table:hover,
+.btn-avatar:hover,
+.game-table-pick-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: brightness(1.06);
+}
+
+/* Estado Active / Presionado: Se hunde como tecla arcade */
+button:active,
+.btn:active,
+.btn-choice:active,
+.btn-table:active,
+.btn-avatar:active,
+.game-table-pick-btn:active {
+  transform: translateY(4px) scale(0.97) !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Variantes de Botones 3D con Sombras Gruesas */
+
+/* Botón Primario: Azul Espacial */
+.btn-primary {
+  background: linear-gradient(180deg, #60A5FA 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border-color: #1E3A8A;
+  box-shadow: 0 6px 0 #1E3A8A, 0 10px 14px rgba(37, 99, 235, 0.35);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 0 #1E3A8A, 0 14px 18px rgba(37, 99, 235, 0.4);
+}
+
+/* Botón Éxito: Verde Campeón */
+.btn-success {
+  background: linear-gradient(180deg, #4ADE80 0%, #16A34A 100%);
+  color: #FFFFFF;
+  border-color: #14532D;
+  box-shadow: 0 6px 0 #14532D, 0 10px 14px rgba(22, 163, 74, 0.35);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.btn-success:hover {
+  box-shadow: 0 8px 0 #14532D, 0 14px 18px rgba(22, 163, 74, 0.4);
+}
+
+/* Botón Amarillo: Estrella de Oro */
+.btn-warning {
+  background: linear-gradient(180deg, #FDE047 0%, #F59E0B 100%);
+  color: #78350F;
+  border-color: #B45309;
+  box-shadow: 0 6px 0 #B45309, 0 10px 14px rgba(245, 158, 11, 0.35);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+.btn-warning:hover {
+  box-shadow: 0 8px 0 #B45309, 0 14px 18px rgba(245, 158, 11, 0.4);
+}
+
+/* Botón Peligro / Reset: Coral Naranja */
+.btn-danger {
+  background: linear-gradient(180deg, #F87171 0%, #DC2626 100%);
+  color: #FFFFFF;
+  border-color: #7F1D1D;
+  box-shadow: 0 6px 0 #7F1D1D, 0 10px 14px rgba(220, 38, 38, 0.35);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.btn-danger:hover {
+  box-shadow: 0 8px 0 #7F1D1D, 0 14px 18px rgba(220, 38, 38, 0.4);
+}
+
+/* Botón Mágico / SIMCE: Morado Real */
+.btn-purple {
+  background: linear-gradient(180deg, #C084FC 0%, #7E22CE 100%);
+  color: #FFFFFF;
+  border-color: #581C87;
+  box-shadow: 0 6px 0 #581C87, 0 10px 14px rgba(126, 34, 206, 0.35);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.btn-purple:hover {
+  box-shadow: 0 8px 0 #581C87, 0 14px 18px rgba(126, 34, 206, 0.4);
+}
+
+/* Botón Neutro / Secundario: Blanco Suave */
+.btn-secondary {
+  background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 100%);
+  color: #1E293B;
+  border-color: #64748B;
+  box-shadow: 0 5px 0 #64748B, 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+.btn-secondary:hover {
+  box-shadow: 0 7px 0 #64748B, 0 12px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Tamaños de Botones */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  border-radius: 14px;
+}
+.btn-md {
+  padding: 12px 24px;
+  font-size: 1.15rem;
+}
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 1.35rem;
+  border-radius: 22px;
+}
+
+/* Burbujas flotantes para el juego "Atrapa el Resultado" */
+@keyframes floatBubble {
+  0% {
+    transform: translateY(110px) scale(0.9) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(0px) scale(1.05) rotate(3deg);
+  }
+  100% {
+    transform: translateY(-110px) scale(0.9) rotate(-3deg);
+  }
+}
+
+.bubble-item {
+  animation: floatBubble 4s infinite ease-in-out;
+}

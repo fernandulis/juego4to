@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="robotBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A7F3D0"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="url(#robotBg)" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- Antenna -->
+  <line x1="50" y1="16" x2="50" y2="28" stroke="#64748B" stroke-width="3"/>
+  <circle cx="50" cy="14" r="5" fill="#EF4444"/>
+  <!-- Ears / Bolts -->
+  <rect x="22" y="40" width="6" height="12" rx="2" fill="#64748B"/>
+  <rect x="72" y="40" width="6" height="12" rx="2" fill="#64748B"/>
+  <!-- Robot Head -->
+  <rect x="26" y="26" width="48" height="38" rx="10" fill="url(#metal)" stroke="#475569" stroke-width="2"/>
+  <!-- Screen face -->
+  <rect x="32" y="32" width="36" height="26" rx="6" fill="#1E293B"/>
+  <!-- Digital Eyes -->
+  <circle cx="42" cy="42" r="5" fill="#38BDF8"/>
+  <circle cx="58" cy="42" r="5" fill="#38BDF8"/>
+  <circle cx="43" cy="41" r="2" fill="#FFFFFF"/>
+  <circle cx="59" cy="41" r="2" fill="#FFFFFF"/>
+  <!-- Digital Smile (matrix blocks) -->
+  <rect x="42" y="51" width="4" height="2" fill="#4ADE80" rx="1"/>
+  <rect x="48" y="52" width="4" height="2" fill="#4ADE80" rx="1"/>
+  <rect x="54" y="51" width="4" height="2" fill="#4ADE80" rx="1"/>
+  <!-- Body -->
+  <path d="M30 68 L70 68 L74 92 L26 92 Z" fill="#CBD5E1" stroke="#475569" stroke-width="2"/>
+  <!-- Calculator meter on body -->
+  <rect x="38" y="74" width="24" height="10" rx="2" fill="#3B82F6"/>
+  <text x="50" y="82" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFF" text-anchor="middle">2×2=4</text>
+</svg>

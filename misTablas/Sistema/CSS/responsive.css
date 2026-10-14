@@ -1,0 +1,147 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Adaptación Móvil y Tablets para "Mis Tablas"
+   Garantiza que la plataforma funcione excelente como PWA / App Móvil
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .simce-layout-container {
+    grid-template-columns: 1fr;
+  }
+
+  .simce-sidebar {
+    order: 2;
+  }
+
+  .simce-main-card {
+    order: 1;
+  }
+
+  .simce-nav-grid {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  .welcome-hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 24px 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-avatar-large {
+    width: 100px;
+    height: 100px;
+  }
+
+  .drag-drop-arena {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .header-bar {
+    padding: 10px 14px;
+    justify-content: center;
+  }
+
+  .brand-logo {
+    height: 38px;
+  }
+
+  .student-badge-container {
+    padding: 4px 10px;
+    gap: 8px;
+  }
+
+  .student-avatar-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .student-name {
+    font-size: 1rem;
+  }
+
+  .stats-indicators {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stat-pill {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+
+  .nav-tabs-wrapper {
+    gap: 8px;
+  }
+
+  .nav-tab-btn {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    border-radius: 16px;
+  }
+
+  .equation-display {
+    font-size: 1.7rem;
+    gap: 8px;
+  }
+
+  .equation-part,
+  .equation-result {
+    padding: 4px 12px;
+  }
+
+  .simce-nav-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .simce-option-btn {
+    padding: 12px 14px;
+    font-size: 1.05rem;
+  }
+
+  .simce-option-letter {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
+  }
+
+  .memory-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .memory-tile {
+    height: 85px;
+    font-size: 1.15rem;
+  }
+
+  .btn-lg {
+    padding: 14px 22px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .tables-carousel {
+    gap: 8px;
+  }
+
+  .table-island-btn {
+    width: 70px;
+    height: 85px;
+  }
+
+  .table-island-btn .table-num {
+    font-size: 1.7rem;
+  }
+
+  .nav-tab-btn {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFDD00"/>
+      <stop offset="100%" stop-color="#FF6B00"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Background Badge / Cloud -->
+  <rect x="5" y="5" width="310" height="80" rx="28" fill="#3B82F6" stroke="#1D4ED8" stroke-width="4"/>
+  <rect x="10" y="10" width="300" height="70" rx="23" fill="#60A5FA"/>
+  
+  <!-- Math Icon: Multiplication Symbol & Star -->
+  <g transform="translate(18, 12)">
+    <circle cx="32" cy="32" r="28" fill="url(#logoGrad)" stroke="#B45309" stroke-width="3" filter="url(#shadow)"/>
+    <!-- Multiplication Cross X -->
+    <path d="M22 22 L42 42 M42 22 L22 42" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="32" cy="10" r="4" fill="#FEF08A"/>
+    <circle cx="50" cy="48" r="3" fill="#FEF08A"/>
+  </g>
+  
+  <!-- Text: MIS TABLAS -->
+  <text x="88" y="44" font-family="'Fredoka', 'Nunito', 'Segoe UI', Impact, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" stroke="#1E3A8A" stroke-width="2" letter-spacing="1">MIS TABLAS</text>
+  <!-- Subtitle: ¡Aventura 4° Básico! -->
+  <rect x="88" y="53" width="200" height="22" rx="11" fill="#FEF08A" stroke="#EAB308" stroke-width="1.5"/>
+  <text x="188" y="68" font-family="'Fredoka', 'Nunito', 'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#78350F" text-anchor="middle">🚀 ¡AVENTURA MATEMÁTICA!</text>
+</svg>

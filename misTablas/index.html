@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bienvenido a Mis Tablas - Ingreso de Estudiante</title>
+  <link rel="stylesheet" href="Sistema/CSS/animaciones.css">
+  <link rel="stylesheet" href="Sistema/CSS/login.css">
+  <link rel="icon" type="image/svg+xml" href="Sistema/IMAGEN/estrella.svg">
+</head>
+<body class="login-body">
+
+  <div class="login-card-container anim-pop">
+    <!-- Logotipo de la Plataforma -->
+    <div class="login-logo-wrapper">
+      <img src="Sistema/IMAGEN/logo.svg" alt="Mis Tablas" class="login-logo-img anim-pulse">
+    </div>
+
+    <p class="login-tagline">
+      ¡Aprende las tablas del 2 al 10 y prepárate para el SIMCE jugando! 🚀
+    </p>
+
+    <!-- Formulario de Ingreso -->
+    <form id="loginForm" onsubmit="handleStudentLogin(event)">
+      <!-- Campo Nombre -->
+      <div class="input-group">
+        <label for="studentNameInput" class="input-label">
+          <span>✏️</span> Escribe tu nombre:
+        </label>
+        <input 
+          type="text" 
+          id="studentNameInput" 
+          class="input-text-kid" 
+          placeholder="Ej: Sofía o Matías" 
+          autocomplete="off" 
+          maxlength="25"
+          required
+        >
+      </div>
+
+      <!-- Selección de Avatar -->
+      <div class="avatar-selection-title">
+        <span>🎭</span> Elige tu personaje favorito:
+      </div>
+
+      <div class="avatars-grid" id="avatarsGrid">
+        <div class="avatar-option-card selected" data-avatar="avatar1.svg" data-name="Mateo el Astronauta">
+          <img src="Sistema/IMAGEN/avatar1.svg" alt="Astronauta" class="avatar-preview-img anim-float">
+          <span class="avatar-label-name">Astronauta</span>
+        </div>
+        <div class="avatar-option-card" data-avatar="avatar2.svg" data-name="Simón el Zorrito">
+          <img src="Sistema/IMAGEN/avatar2.svg" alt="Zorrito" class="avatar-preview-img anim-float">
+          <span class="avatar-label-name">Zorrito</span>
+        </div>
+        <div class="avatar-option-card" data-avatar="avatar3.svg" data-name="Byte el Robot">
+          <img src="Sistema/IMAGEN/avatar3.svg" alt="Robot" class="avatar-preview-img anim-float">
+          <span class="avatar-label-name">Robotito</span>
+        </div>
+        <div class="avatar-option-card" data-avatar="avatar4.svg" data-name="Luna la Maga">
+          <img src="Sistema/IMAGEN/avatar4.svg" alt="Maga" class="avatar-preview-img anim-float">
+          <span class="avatar-label-name">Maga Luna</span>
+        </div>
+        <div class="avatar-option-card" data-avatar="avatar5.svg" data-name="Rex el Dino">
+          <img src="Sistema/IMAGEN/avatar5.svg" alt="Dino" class="avatar-preview-img anim-float">
+          <span class="avatar-label-name">Dino Rex</span>
+        </div>
+        <div class="avatar-option-card" data-avatar="avatar6.svg" data-name="Super Estrellita">
+          <img src="Sistema/IMAGEN/avatar6.svg" alt="Estrella" class="avatar-preview-img anim-float">
+          <span class="avatar-label-name">Superestrella</span>
+        </div>
+      </div>
+
+      <!-- Mensaje de Validación -->
+      <div id="loginErrorMsg" class="validation-error-msg anim-shake">
+        ⚠️ Por favor escribe tu nombre para comenzar la aventura.
+      </div>
+
+      <!-- Botón de Ingreso con Animación 3D y Efecto de Brillo -->
+      <button type="submit" class="btn btn-primary btn-enter-game anim-bounce" id="btnEnter">
+        ¡ENTRAR A LA AVENTURA! 🎮✨
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // Sintetizador Web Audio API liviano integrado para la pantalla de bienvenida
+    let audioCtx = null;
+    function playTone(freq, type = 'sine', duration = 0.12) {
+      try {
+        if (!audioCtx) {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          if (AC) audioCtx = new AC();
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    let selectedAvatar = "avatar1.svg";
+    let selectedAvatarName = "Mateo el Astronauta";
+
+    // Selección interactiva de avatar
+    const cards = document.querySelectorAll('.avatar-option-card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        playTone(600, 'triangle', 0.1);
+        cards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedAvatar = card.getAttribute('data-avatar');
+        selectedAvatarName = card.getAttribute('data-name');
+      });
+    });
+
+    // Cargar nombre y avatar previos si ya existían
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const saved = localStorage.getItem('misTablas_student');
+        if (saved) {
+          const data = JSON.parse(saved);
+          if (data.name) document.getElementById('studentNameInput').value = data.name;
+          if (data.avatar) {
+            cards.forEach(c => {
+              if (c.getAttribute('data-avatar') === data.avatar) {
+                cards.forEach(other => other.classList.remove('selected'));
+                c.classList.add('selected');
+                selectedAvatar = data.avatar;
+                selectedAvatarName = data.avatarName || "Personaje";
+              }
+            });
+          }
+        }
+      } catch (e) {}
+    });
+
+    function handleStudentLogin(e) {
+      e.preventDefault();
+      const input = document.getElementById('studentNameInput');
+      const errorMsg = document.getElementById('loginErrorMsg');
+      const name = (input.value || '').trim();
+
+      // Validación estricta
+      if (!name || name.length < 2) {
+        playTone(200, 'sawtooth', 0.25);
+        errorMsg.style.display = 'block';
+        errorMsg.innerText = '⚠️ Por favor escribe tu nombre (mínimo 2 letras) para ingresar.';
+        input.focus();
+        input.classList.add('anim-shake');
+        setTimeout(() => input.classList.remove('anim-shake'), 600);
+        return;
+      }
+
+      errorMsg.style.display = 'none';
+      playTone(800, 'triangle', 0.2);
+
+      // Guardar o actualizar datos del estudiante en localStorage
+      try {
+        let currentStudent = null;
+        const saved = localStorage.getItem('misTablas_student');
+        if (saved) {
+          currentStudent = JSON.parse(saved);
+        }
+
+        const updatedStudent = {
+          ...(currentStudent || {}),
+          name: name,
+          avatar: selectedAvatar,
+          avatarName: selectedAvatarName,
+          score: currentStudent ? (currentStudent.score || 0) : 0,
+          stars: currentStudent ? (currentStudent.stars || 0) : 0,
+          tablesProgress: currentStudent ? (currentStudent.tablesProgress || {}) : {},
+          achievements: currentStudent ? (currentStudent.achievements || []) : []
+        };
+
+        localStorage.setItem('misTablas_student', JSON.stringify(updatedStudent));
+      } catch (err) {
+        console.error("Error al guardar:", err);
+      }
+
+      // Animación de entrada y redirección a Sistema/index.html
+      const btn = document.getElementById('btnEnter');
+      btn.innerText = '¡Cargando Aventura...! 🚀';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        window.location.href = 'Sistema/index.html';
+      }, 500);
+    }
+  </script>
+</body>
+</html>
